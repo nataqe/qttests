@@ -35,7 +35,7 @@ public class RegisterPageTests {
     @DisplayName("Check email with incorrect format")
     public void testErrorForIncorrectEmailAddress_shouldContainCorrectText(String incorrectEmail) {
         registerPage.addEmail(incorrectEmail);
-        registerPage.email.pressEnter();
+        registerPage.getEmail().pressEnter();
         Assertions.assertEquals("Please enter a valid email address.", registerPage.getErrorLabelEmailText(), "Error description for email is incorrect.");
     }
 
@@ -44,7 +44,7 @@ public class RegisterPageTests {
     @DisplayName("Check empty email")
     public void testErrorForEmptyEmail_shouldContainCorrectText() {
         registerPage.addEmail("");
-        registerPage.email.pressEnter();
+        registerPage.getEmail().pressEnter();
         Assertions.assertEquals("This field is required.", registerPage.getErrorLabelEmailText(), "Error description for empty email is incorrect.");
     }
 
@@ -53,7 +53,7 @@ public class RegisterPageTests {
     @DisplayName("Check short password")
     public void testErrorForShortPassword_shouldContainCorrectText() {
         registerPage.addPassword("pass");
-        registerPage.password.pressEnter();
+        registerPage.getPassword().pressEnter();
         Assertions.assertEquals("Please enter at least 7 characters.", registerPage.getErrorLabelPasswordText(), "Error description for short password is incorrect.");
     }
 
@@ -62,7 +62,7 @@ public class RegisterPageTests {
     @DisplayName("Check empty password")
     public void testErrorForEmptyPassword_shouldContainCorrectText() {
         registerPage.addPassword("");
-        registerPage.password.pressEnter();
+        registerPage.getPassword().pressEnter();
         Assertions.assertEquals("This field is required.", registerPage.getErrorLabelPasswordText(), "Error description for empty password is incorrect.");
     }
 
@@ -73,7 +73,7 @@ public class RegisterPageTests {
         String email = "user.name1@domain.com";
         registerPage.addEmail(email);
         registerPage.addPassword(email);
-        registerPage.password.pressEnter();
+        registerPage.getPassword().pressEnter();
         Assertions.assertEquals("Please see password requirements", registerPage.getErrorLabelPasswordText(), "Error description for password is incorrect.");
     }
 
@@ -82,7 +82,7 @@ public class RegisterPageTests {
     @DisplayName("Check repeated password verification")
     public void testErrorForIncorrectVerifyPassword_shouldContainCorrectText() {
         registerPage.addVerifyPassword("mypass");
-        registerPage.verifyPassword.pressEnter();
+        registerPage.getVerifyPassword().pressEnter();
         Assertions.assertEquals("Please enter the same value again.", registerPage.getErrorLabelVerifyPasswordText(), "Error description for incorrect repeated password is incorrect.");
     }
 
